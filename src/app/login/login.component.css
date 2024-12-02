@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.conteiner{
+    /* Essas propriedades devem ser colocados no componente pai */
+    display: flex;
+    height: 100vh; /* Altura ocupa a tela toda */
+    align-items: center; /* Alinha na vertical */
+    justify-content: center;  /* Centralizar na horizontal */
+}
+form{
+	height: 200px;
+	width: 300px;
+}

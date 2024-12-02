@@ -1,0 +1,72 @@
+<h3 class="distancia-margem">Cadastro de Usuário</h3>
+
+<form class="distancia-margem" #formValidate="ngForm" (ngSubmit)="salvarUser()">
+  <!-- Campo ID -->
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="id">Id</label>
+      <input type="text" class="form-control" [(ngModel)]="usuario.id" id="id" name="id" readonly="true" autocomplete="off">
+    </div>
+  </div>
+
+  <!-- Campo Nome -->
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="nome">Nome</label>
+      <span *ngIf="nomeValidate.invalid && nomeValidate.touched" class="text-danger"> *</span>
+      <input type="text" class="form-control" #nomeValidate="ngModel" [(ngModel)]="usuario.nome" id="nome" name="nome" required autocomplete="off">
+      <div *ngIf="nomeValidate.invalid && nomeValidate.touched" class="text-danger">
+        Nome é obrigatório.
+      </div>
+    </div>
+  </div>
+
+  <!-- Campo Login e Senha -->
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="login">Login</label>
+      <span *ngIf="loginValidate.invalid && loginValidate.touched" class="text-danger"> *</span>
+      <input type="text" class="form-control" #loginValidate="ngModel" [(ngModel)]="usuario.login" id="login" name="login" required autocomplete="off">
+      <div *ngIf="loginValidate.invalid && loginValidate.touched" class="text-danger">
+        Login é obrigatório.
+      </div>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="senha">Senha</label>
+      <span *ngIf="senhaValidate.invalid && senhaValidate.touched" class="text-danger"> *</span>
+      <input type="password" class="form-control" #senhaValidate="ngModel" [(ngModel)]="usuario.senha" id="senha" name="senha" required autocomplete="off">
+      <div *ngIf="senhaValidate.invalid && senhaValidate.touched" class="text-danger">
+        Senha é obrigatória.
+      </div>
+    </div>
+  </div>
+
+  <!-- Campo CPF e CEP -->
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="cpf">CPF</label>
+      <span *ngIf="cpfValidate.invalid && cpfValidate.touched" class="text-danger"> *</span>
+      <input type="text" class="form-control" #cpfValidate="ngModel" [(ngModel)]="usuario.cpf" id="cpf" name="cpf" required autocomplete="off">
+      <div *ngIf="cpfValidate.invalid && cpfValidate.touched" class="text-danger">
+        CPF é obrigatório.
+      </div>
+    </div>
+    <div class="form-group col-md-3">
+      <label for="cep">CEP</label>
+      <span *ngIf="cepValidate.invalid && cepValidate.touched" class="text-danger"> *</span>
+      <input type="text" class="form-control" #cepValidate="ngModel" [(ngModel)]="usuario.cep" id="cep" name="cep" required autocomplete="off">
+      <div *ngIf="cepValidate.invalid && cepValidate.touched" class="text-danger">
+        CEP é obrigatório.
+      </div>
+    </div>
+  </div>
+
+  <!-- Botões -->
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <button type="button" class="btn btn-outline-secondary" [routerLink]="['/userList']" routerLinkActive="router-link-active">Voltar</button>
+      <button type="button" class="btn btn-outline-primary btn-margem" (click)="novo()">Novo</button>
+      <button type="submit" class="btn btn-outline-success btn-margem" [disabled]="formValidate.invalid">Salvar</button>
+    </div>
+  </div>
+</form>
